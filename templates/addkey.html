@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Add key</title>
+{% endblock %}
+
+{% block body %}
+<a href="{{ url_for('index') }}" class="keypanelbuttons">KeyPanel</a>
+<p>Hello, {{ user.username}}</p>
+<form action="{{ url_for('addkey') }}" method="post" class="form-addkey">
+    <p><label>Game: </label>
+        <select name="gamelist">
+  <option>Choose game</option>
+  <option>Apex_Legends</option>
+  <option>DayZ</option>
+  <option>EFT</option>
+  <option>RUST</option>
+ </select></p>
+
+    <p><label>Count: </label><input type="text" name="count" value="" required/>
+    <p><label>Days: </label><input type="text" name="days" value="" required/>
+    <p><input type="submit" value="Add"/>
+</form>
+{% endblock %}

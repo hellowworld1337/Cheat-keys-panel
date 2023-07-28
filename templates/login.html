@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+<title>Login</title>
+{% endblock %}
+
+{% block body %}
+{{ super() }}
+    {% for cat, msg in get_flashed_messages(True) %}
+    <div class="flash {{ cat }}">{{ msg }}</div>
+    {% endfor %}
+ <div id="container-login">
+        <div id="title">
+             Login
+        </div>
+
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <div class="input">
+                <div class="input-addon">
+                    <i class="material-icons">{{ form.username.label() }} </i>
+                </div>
+                {{ form.username() }}
+                <!--<input name="username" placeholder="Username" type="text" required class="validate" autocomplete="off">-->
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="input">
+                <div class="input-addon">
+                    <i class="material-icons">{{ form.password.label() }}</i>
+                </div>
+                {{ form.password() }}
+                <!--<input name="password" placeholder="Password" type="password" required class="validate" autocomplete="off">-->
+            </div>
+
+            <div class="remember-me">
+                <!--<input type="checkbox" name="remainme">-->
+                {{ form.remember() }}
+                <span style="color: #DDD">{{ form.remember.label() }}</span>
+            </div>
+            {{ form.submit() }}
+            <!--<input type="submit" value="Log In" />-->
+        </form>
+
+        <div class="forgot-password">
+            <a href="#">Forgot your password?</a>
+        </div>
+
+
+        <div class="register">
+            Don't have an account yet?
+            <a href="{{ url_for('register') }}"><button id="register-link">Register here</button></a>
+        </div>
+    </div>
+{% endblock %}
